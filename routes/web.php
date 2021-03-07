@@ -22,13 +22,15 @@ Route::group(['prefix' => 'admin'], function(){
 Route::get('admin/news/create', 
 'Admin\NewsController@add');
 
+
 Route::get('XXX',
-'Admin\AAAController@bbb');
+'AAAController@bbb');
+
 
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('admin/profile/create',
+    Route::get('profile/create',
 'Admin\ProfileController@add');
-    Route::get('admin/profile/edit',
+    Route::get('profile/edit',
 'Admin\ProfileController@edit');
 });
 
