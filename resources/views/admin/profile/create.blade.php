@@ -21,5 +21,36 @@
     </head>    
     <body>
         <h1>profile作成画面</h1>
+        <form action="{{
+        action('Admin\ProfileController@create') }}"
+        method="post" enctype="multipart/form-data">
+        <div class="form-group row">
+            <label class="col-md-2">氏名</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2">性別</label>
+                <div class="col-md-10">
+                    <input type="radio" class="form-control" name="gender" value="male">男性 {{ old('gender') }}</button>
+                    <input type="radio" class="form-control" name="gender" value="male">女性 {{ old('gender') }}</button>
+                    <input type="radio" class="form-control" name="gender" value="female">その他 {{ old('gender') }}</button>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2">趣味</label>
+                <div class="col-md-10">
+                    <textarea class="form-control" name="hobby" rows="10">{{ old('hobby') }}</textarea>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2">自己紹介欄</label>
+                <div class="col-md-10">
+                    <textarea class="form-control" name="introduction" rows="20">{{ old('introduction') }}</textarea>
+                </div>
+        </div>
+        {{ csrf_field() }}
+        <input type="submit" class="btn btn-primary" value="更新">
     </body>
 </html>
