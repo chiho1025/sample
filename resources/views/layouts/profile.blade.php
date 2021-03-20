@@ -23,7 +23,6 @@
                     
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
-                        </ul>
                         @guest
                         <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                         @else
@@ -43,6 +42,8 @@
                                 </div>
                             </li>
                             @endguest
+                        </ul>
+                        
                     </div>
                 </div>
             </nav>

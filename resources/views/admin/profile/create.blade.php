@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible"content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>My news</title>
-    </head> 
+
     
     <body>
         @extends('layouts.profile')
@@ -18,11 +13,11 @@
                     <form action="{{
         action('Admin\ProfileController@create') }}"
         method="post" enctype="multipart/form-data">
-                        @if (count($errors) >0)
+                        
+                        @if (count($errors) > 0)
                             <ul>
                                 @foreach($errors->all() as $e)
-                                <li>{{ $e }}
-                                </li>
+                                <li>{{ $e }}</li>
                                 @endforeach
                             </ul>
                         @endif
