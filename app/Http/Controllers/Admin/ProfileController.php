@@ -21,7 +21,7 @@ class ProfileController extends Controller
         $profile = new Profile;
         $form = $request->all();
         
-        $profile->fil($form);
+        $profile->fill($form);
         $profile->save();
         
         return redirect('admin/profile/create');
