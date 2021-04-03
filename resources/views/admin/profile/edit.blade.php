@@ -16,22 +16,33 @@
                         </ul>
                     @endif
                     <div class="form-group row">
-                            <label class="col-md-2">氏名</label>
+                            <label class="col-md-2" >氏名</label>
                             <div class="col-md-10">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <input type="text" class="form-control" name="name" value="{{ $form->name }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2">性別</label>
                             <div class="radio-button-container">
                                 <div class="radio-buttons">
-                                <input type="radio" name="gender" value="male">男性</button>
+                                <input type="radio" name="gender" value="male" 
+                                @if($form->gender == "male") 
+                                checked="checked"
+                                @endif
+                                >男性</button>
+                                
                                 </div>
                                 <div class="radio-buttons">
-                                <input type="radio" name="gender" value="male">女性</button>
+                                <input type="radio" name="gender" value="female"
+                                @if($form->gender == "female") 
+                                checked="checked"
+                                @endif>女性</button>
                                 </div>
                                 <div class="radio-buttons">
-                                <input type="radio" name="gender" value="female">その他</button>
+                                <input type="radio" name="gender" value="other"
+                                @if($form->gender == "other") 
+                                checked="checked"
+                                @endif>その他</button>
                                 </div>
                             </div>
                             
@@ -39,20 +50,22 @@
                         <div class="form-group row">
                             <label class="col-md-2">趣味</label>
                             <div class="col-md-10">
-                            <textarea class="form-control" name="hobby" rows="10">{{ old('hobby') }}</textarea>
+                            <textarea class="form-control" name="hobby" rows="10">{{ $form->hobby }}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                         <label class="col-md-2">自己紹介欄</label>
                             <div class="col-md-10">
-                            <textarea class="form-control" name="introduction" rows="20">{{ old('introduction') }}</textarea>
+                            <textarea class="form-control" name="introduction" rows="20">{{ $form->introduction }}</textarea>
                             </div>
                         </div>
+                         <input type="hidden" name="id" value="{{ $form->id }}">
                         {{ csrf_field() }}
                             <input type="submit" class="btn btn-primary" value="更新">
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
