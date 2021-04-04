@@ -11,9 +11,12 @@ use Carbon\Carbon;
 class NewsController extends Controller
 {
     //
-    public function add (){
-return view('admin.news.create');
-}
+    public function add ()
+    {
+        return view('admin.news.create');
+    }
+
+
     public function create(Request $request)
     {
         // Varidationを行う
@@ -27,15 +30,16 @@ return view('admin.news.create');
             $news->image_path = basename($path);
         } else {
             $news->image_path = null;
-      }
-      unset($form['_token']);
-      unset($form['image']);
-      // データベースに保存する
-      $news->fill($form);
-      $news->save();
+        }
         
-      return redirect('admin/news/create');
-}
+        unset($form['_token']);
+        unset($form['image']);
+        // データベースに保存する
+        $news->fill($form);
+        $news->save();
+        
+        return redirect('admin/news/create');
+    }
 
 
     public function index(Request $request)
@@ -67,8 +71,10 @@ return view('admin.news.create');
   {
       // Validationをかける
       $this->validate($request, News::$rules);
+      
       // News Modelからデータを取得する
       $news = News::find($request->id);
+      
       // 送信されてきたフォームデータを格納する
       $news_form = $request->all();
       if ($request->remove == 'true') {
@@ -83,6 +89,7 @@ return view('admin.news.create');
       unset($news_form['image']);
       unset($news_form['remove']);
       unset($news_form['_token']);
+      
       // 該当するデータを上書きして保存する
       $news->fill($news_form)->save();
       
